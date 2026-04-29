@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science Titans | Excellence in STEM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #3D1A6E;
+    --purple-mid: #5C2D9E;
+    --purple-light: #7B4FBB;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #F5E6B8;
+    --black: #0A0A0A;
+    --white: #FAFAF7;
+    --gray-light: #F0EDE8;
+    --gray-mid: #C8C4BC;
+    --text-dark: #1A1016;
+    --text-body: #2D2530;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10, 10, 10, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .nav-logo {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700; color: var(--gold);
+    font-size: 18px; letter-spacing: -1px;
+  }
+
+  .nav-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; font-size: 16px;
+    color: var(--white);
+    letter-spacing: 2px; text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .nav-name span {
+    display: block; font-weight: 300; font-size: 10px;
+    color: var(--gold); letter-spacing: 3px;
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500; font-size: 13px;
+    color: var(--gray-mid); text-decoration: none;
+    letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 8px 20px !important;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+  /* ── PAGES ── */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ── HOME PAGE ── */
+  .hero {
+    height: 100vh;
+    background: var(--black);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 0 8%;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(61,26,110,0.7) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 20% 80%, rgba(92,45,158,0.3) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-accent {
+    position: absolute; right: 5%;
+    top: 50%; transform: translateY(-50%);
+    width: 480px; height: 480px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-accent::before {
+    content: '';
+    position: absolute;
+    width: 360px; height: 360px;
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 50%;
+  }
+
+  .hero-atom {
+    width: 200px; height: 200px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .atom-nucleus {
+    width: 24px; height: 24px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(201,168,76,0.6);
+    z-index: 2;
+  }
+
+  .atom-ring {
+    position: absolute;
+    border: 1.5px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    animation: spin linear infinite;
+  }
+
+  .atom-ring:nth-child(1) { width: 100px; height: 60px; transform: rotateX(70deg); animation-duration: 3s; }
+  .atom-ring:nth-child(2) { width: 100px; height: 60px; transform: rotateX(70deg) rotateZ(60deg); animation-duration: 4s; }
+  .atom-ring:nth-child(3) { width: 100px; height: 60px; transform: rotateX(70deg) rotateZ(120deg); animation-duration: 5s; }
+
+  @keyframes spin { from { transform: rotateX(70deg) rotateZ(0deg); } to { transform: rotateX(70deg) rotateZ(360deg); } }
+  .atom-ring:nth-child(2) { animation: spin2 4s linear infinite; }
+  @keyframes spin2 { from { transform: rotateX(70deg) rotateZ(60deg); } to { transform: rotateX(70deg) rotateZ(420deg); } }
+  .atom-ring:nth-child(3) { animation: spin3 5s linear infinite; }
+  @keyframes spin3 { from { transform: rotateX(70deg) rotateZ(120deg); } to { transform: rotateX(70deg) rotateZ(480deg); } }
+
+  .hero-content { position: relative; z-index: 2; max-width: 580px; }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 82px);
+    font-weight: 700; line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .hero-title .gold { color: var(--gold); }
+
+  .hero-subtitle {
+    font-size: 17px; font-weight: 300; line-height: 1.7;
+    color: rgba(250,250,247,0.65);
+    margin-bottom: 44px;
+    max-width: 460px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 14px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    padding: 14px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    background: transparent; cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  .hero-stats {
+    position: absolute; bottom: 50px; left: 8%;
+    display: flex; gap: 48px;
+    z-index: 2;
+  }
+
+  .stat-item { text-align: left; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px; font-weight: 400;
+    color: rgba(250,250,247,0.45);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── HOME SECTIONS ── */
+  .section {
+    padding: 100px 8%;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 700; line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-size: 16px; font-weight: 300; line-height: 1.8;
+    color: #5A5060; max-width: 540px;
+  }
+
+  /* Highlights / pillars */
+  .pillars {
+    background: var(--black);
+    padding: 100px 8%;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 60px;
+  }
+
+  .pillar-card {
+    background: #111;
+    padding: 48px 36px;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .pillar-card:hover { background: #161014; }
+
+  .pillar-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple-mid), var(--gold));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .pillar-card:hover::before { transform: scaleX(1); }
+
+  .pillar-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .pillar-icon {
+    font-size: 28px; margin-bottom: 20px;
+  }
+
+  .pillar-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--white); margin-bottom: 14px;
+  }
+
+  .pillar-text {
+    font-size: 14px; font-weight: 300; line-height: 1.8;
+    color: rgba(250,250,247,0.5);
+  }
+
+  /* Achievements strip */
+  .achievements {
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-mid) 100%);
+    padding: 80px 8%;
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 50px;
+  }
+
+  .achievement-item {
+    background: transparent;
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  .achievement-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .achievement-label {
+    font-size: 12px; font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* Photo grid */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 50px;
+  }
+
+  .photo-slot {
+    aspect-ratio: 4/3;
+    background: var(--gray-light);
+    border: 2px dashed rgba(61,26,110,0.2);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .photo-slot:hover { border-color: var(--purple-light); }
+
+  .photo-slot.tall { grid-row: span 2; }
+
+  .photo-slot-icon { font-size: 32px; margin-bottom: 12px; opacity: 0.3; }
+
+  .photo-slot-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--purple-light); opacity: 0.6;
+  }
+
+  /* ── ABOUT PAGE ── */
+  .about-hero {
+    height: 50vh; min-height: 380px;
+    background: var(--black);
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+    padding: 0 8% 60px;
+  }
+
+  .about-hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--purple) 0%, #1A0A2E 60%, var(--black) 100%);
+  }
+
+  .about-hero-pattern {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(201,168,76,0.12) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .page-title-area { position: relative; z-index: 2; }
+
+  .page-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+
+  .page-main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 700; color: var(--white);
+    line-height: 1.0;
+  }
+
+  /* About content */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    padding: 100px 8%;
+  }
+
+  .two-col-body { font-size: 16px; line-height: 1.9; color: #4A4050; font-weight: 300; }
+  .two-col-body p + p { margin-top: 20px; }
+  .two-col-body strong { color: var(--purple); font-weight: 600; }
+
+  .about-photo-col { display: flex; flex-direction: column; gap: 16px; }
+
+  .team-grid {
+    background: var(--gray-light);
+    padding: 80px 8%;
+  }
+
+  .team-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .team-card {
+    background: var(--white);
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(61,26,110,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .team-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(61,26,110,0.12); }
+
+  .team-photo {
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--gray-light), #E0DAF0);
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 3px solid var(--gold);
+    font-size: 36px; opacity: 0.3;
+  }
+
+  .team-photo.gold-photo {
+    background: linear-gradient(135deg, #2A1200, #6B4400);
+    border-bottom: 3px solid var(--gold);
+    opacity: 1;
+    color: var(--gold);
+  }
+
+  .team-photo.purple-photo {
+    background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+    border-bottom: 3px solid var(--purple-light);
+    opacity: 1;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .team-info { padding: 20px; }
+
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .team-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--purple-light); margin-top: 4px;
+  }
+
+  .team-events {
+    font-size: 13px; color: #888;
+    margin-top: 8px; font-weight: 300;
+  }
+
+  /* Timeline */
+  .timeline-section { padding: 80px 8%; background: var(--white); }
+
+  .timeline {
+    margin-top: 50px;
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--purple), var(--gold));
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 48px 40px;
+  }
+
+  .timeline-dot {
+    position: absolute; left: -44px; top: 4px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--purple);
+  }
+
+  .timeline-year {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--purple-light); margin-bottom: 6px;
+  }
+
+  .timeline-event {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--text-dark); margin-bottom: 8px;
+  }
+
+  .timeline-desc {
+    font-size: 14px; color: #888; font-weight: 300; line-height: 1.7;
+  }
+
+  /* ── MISSION PAGE ── */
+  .mission-hero {
+    height: 50vh; min-height: 380px;
+    background: var(--purple);
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+    padding: 0 8% 60px;
+  }
+
+  .mission-hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1A0A2E 0%, var(--purple) 50%, var(--purple-mid) 100%);
+  }
+
+  .mission-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .values-section { padding: 100px 8%; }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .value-card {
+    padding: 40px;
+    border-left: 3px solid var(--purple-light);
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(61,26,110,0.06);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .value-card:hover { border-color: var(--gold); transform: translateX(4px); }
+
+  .value-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 12px;
+  }
+
+  .value-text {
+    font-size: 15px; font-weight: 300; line-height: 1.8; color: #5A5060;
+  }
+
+  .mission-statement-block {
+    background: var(--black);
+    padding: 100px 8%;
+    text-align: center;
+  }
+
+  .mission-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 400; font-style: italic;
+    color: var(--white); line-height: 1.5;
+    max-width: 800px; margin: 0 auto 30px;
+  }
+
+  .mission-quote .accent { color: var(--gold); }
+
+  .mission-attr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gray-mid);
+  }
+
+  .goals-section { padding: 80px 8%; background: var(--gray-light); }
+
+  .goals-list { margin-top: 50px; display: flex; flex-direction: column; gap: 24px; }
+
+  .goal-item {
+    display: flex; gap: 24px; align-items: flex-start;
+    background: var(--white); padding: 32px;
+    border: 1px solid rgba(61,26,110,0.06);
+    transition: box-shadow 0.2s;
+  }
+
+  .goal-item:hover { box-shadow: 0 8px 32px rgba(61,26,110,0.1); }
+
+  .goal-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 700;
+    color: var(--purple-light); opacity: 0.3;
+    line-height: 1; flex-shrink: 0; width: 60px;
+  }
+
+  .goal-content {}
+
+  .goal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 8px;
+  }
+
+  .goal-text { font-size: 15px; font-weight: 300; line-height: 1.8; color: #5A5060; }
+
+  /* ── SPONSORS PAGE ── */
+  .sponsor-hero {
+    height: 50vh; min-height: 380px;
+    background: var(--black);
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+    padding: 0 8% 60px;
+  }
+
+  .sponsor-hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--black), #1A0E30 60%, var(--purple) 100%);
+  }
+
+  .sponsor-intro { padding: 80px 8%; }
+
+  .sponsor-intro-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;
+  }
+
+  .sponsor-tiers { padding: 80px 8%; background: var(--gray-light); }
+
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .tier-card {
+    background: var(--white);
+    border: 1px solid rgba(61,26,110,0.08);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .tier-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(61,26,110,0.15); }
+
+  .tier-card.featured { border: 2px solid var(--gold); }
+
+  .tier-header {
+    padding: 32px 28px;
+    background: var(--black);
+    text-align: center;
+  }
+
+  .tier-card.featured .tier-header {
+    background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+  }
+
+  .tier-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+
+  .tier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 700;
+    color: var(--white);
+  }
+
+  .tier-amount {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+  }
+
+  .tier-body { padding: 32px 28px; }
+
+  .tier-perks { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  .tier-perks li {
+    font-size: 14px; font-weight: 300; color: #4A4050;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+
+  .tier-perks li::before {
+    content: '✓';
+    color: var(--gold); font-weight: 700; flex-shrink: 0;
+  }
+
+  .sponsor-cta { margin-top: 24px; width: 100%; text-align: center; }
+
+  .sponsor-logos-section { padding: 60px 8%; }
+
+  .sponsor-logos-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px;
+  }
+
+  .sponsor-logo-slot {
+    border: 2px dashed rgba(61,26,110,0.15);
+    aspect-ratio: 3/2;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--purple-light); opacity: 0.4;
+    transition: opacity 0.2s;
+  }
+
+  .sponsor-logo-slot:hover { opacity: 0.7; }
+
+  /* ── CONTACT PAGE ── */
+  .contact-hero {
+    height: 50vh; min-height: 380px;
+    background: var(--black);
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+    padding: 0 8% 60px;
+  }
+
+  .contact-hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(92,45,158,0.5), transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.15), transparent 60%),
+                var(--black);
+  }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+
+  .contact-info {
+    background: var(--purple);
+    padding: 80px 8% 80px 8%;
+  }
+
+  .contact-item { margin-bottom: 40px; }
+
+  .contact-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--white); line-height: 1.4;
+  }
+
+  .contact-form-section {
+    background: var(--white);
+    padding: 80px 8%;
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 32px;
+  }
+
+  .form-row { margin-bottom: 24px; }
+
+  .form-label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 8px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(61,26,110,0.2);
+    background: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px; font-weight: 300;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--purple-mid);
+  }
+
+  .form-textarea { min-height: 140px; resize: vertical; }
+
+  .form-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 60px 8% 30px;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+
+  .footer-cols {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+  }
+
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
+  }
+
+  .footer-brand-name span { color: var(--gold); }
+
+  .footer-tagline {
+    font-size: 13px; font-weight: 300;
+    color: rgba(255,255,255,0.4); line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-links li a {
+    font-size: 13px; font-weight: 300;
+    color: rgba(255,255,255,0.45); text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .footer-links li a:hover { color: var(--gold); }
+
+  .footer-divider {
+    border: none; border-top: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+  }
+
+  .footer-bottom {
+    display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-size: 12px; color: rgba(255,255,255,0.25); font-weight: 300;
+  }
+
+  .footer-badge {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 6px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── PAGE TRANSITION ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page.active { animation: fadeIn 0.4s ease forwards; }
+
+  /* ── DIVIDER DECORATION ── */
+  .gold-rule {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 8%;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-brand" onclick="showPage('home')">
+    <div class="nav-logo">ST</div>
+    <div class="nav-name">
+      Science Titans
+      <span>Science · Innovation · Excellence</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+    <li><a onclick="showPage('mission')" id="nav-mission">Mission</a></li>
+    <li><a onclick="showPage('sponsors')" id="nav-sponsors">Sponsors</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-accent">
+      <div class="hero-atom">
+        <div class="atom-ring"></div>
+        <div class="atom-ring"></div>
+        <div class="atom-ring"></div>
+        <div class="atom-nucleus"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Kennedy High School, Fremont CA · Science Olympiad Division C</div>
+      <h1 class="hero-title">
+        Where<br>
+        <span class="gold">Science</span><br>
+        Meets<br>Greatness
+      </h1>
+      <p class="hero-subtitle">
+        A competitive team of dedicated students pushing the boundaries of scientific knowledge, driven by curiosity and the relentless pursuit of excellence.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('about')">Meet Our Team</button>
+        <button class="btn-outline" onclick="showPage('sponsors')">Become a Sponsor</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">23</div>
+        <div class="stat-label">Events</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5th</div>
+        <div class="stat-label">Regional Finish</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years Active</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section class="pillars">
+    <div>
+      <div class="section-label" style="color:var(--gold)">What We Stand For</div>
+      <h2 class="section-title" style="color:var(--white)">Three Pillars of<br>Our Program</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <div class="pillar-icon">🔬</div>
+        <div class="pillar-title">Scientific Rigor</div>
+        <p class="pillar-text">We train across 23 events spanning biology, chemistry, physics, engineering, and earth science — building deep, cross-disciplinary expertise through intensive, year-round preparation.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <div class="pillar-icon">🤝</div>
+        <div class="pillar-title">Team Culture</div>
+        <p class="pillar-text">Our strength comes from collaboration. Every member contributes unique expertise, and our success is built on mutual accountability, shared goals, and a culture of lifting each other up.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <div class="pillar-icon">🚀</div>
+        <div class="pillar-title">Community Impact</div>
+        <p class="pillar-text">We extend beyond competition — hosting science outreach events, mentoring younger students, and inspiring the next generation of scientists and engineers in our community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Preview -->
+  <section class="section">
+    <div class="section-label">Gallery</div>
+    <h2 class="section-title">Our Moments<br>in Science</h2>
+    <p class="section-body">From late-night build sessions to the intensity of competition day — these are the memories that define us.</p>
+    <div class="photo-grid">
+      <div class="photo-slot tall">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Competition Day</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Team Practice</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Lab Session</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Awards Ceremony</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Build Events</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="achievements">
+    <div class="section-label" style="color:var(--gold-light)">Track Record</div>
+    <h2 class="section-title" style="color:var(--white)">Our Achievements</h2>
+    <div class="achievements-grid">
+      <div class="achievement-item">
+        <div class="achievement-num">🥇 2</div>
+        <div class="achievement-label">Gold Medals</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-num">🥈 2</div>
+        <div class="achievement-label">Silver Medals</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-num">5th</div>
+        <div class="achievement-label">Regional Finish</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-num">11th</div>
+        <div class="achievement-label">State Finish</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-num">🏅+</div>
+        <div class="achievement-label">More Medals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsor CTA -->
+  <section class="section" style="background: var(--gray-light); text-align: center; padding: 80px 8%;">
+    <div class="section-label" style="justify-content: center;">Support Our Mission</div>
+    <h2 class="section-title" style="max-width: 500px; margin: 0 auto 20px;">Partner With the Next Generation of Scientists</h2>
+    <p style="max-width: 500px; margin: 0 auto 36px; font-size: 16px; color: #5A5060; line-height: 1.8; font-weight: 300;">Your sponsorship directly funds competition travel, laboratory equipment, and STEM outreach. Join the organizations investing in tomorrow's innovators.</p>
+    <button class="btn-primary" onclick="showPage('sponsors')">View Sponsorship Tiers →</button>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════
+     ABOUT PAGE
+══════════════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <div class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-hero-pattern"></div>
+    <div class="page-title-area">
+      <div class="page-eyebrow">Our Story</div>
+      <h1 class="page-main-title">About<br>Our Team</h1>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Built from<br>Passion, Driven<br>by Purpose</h2>
+      <div class="two-col-body">
+        <p>Science Titans began as the <strong>Science Warriors</strong> — a Division B team at <strong>G.M. Walters Middle School</strong> in Fremont, California. What started as a group of curious, competitive students has grown into one of the most driven Science Olympiad programs in the region.</p>
+        <p>Now competing as <strong>Science Titans in Division C at Kennedy High School</strong>, our team has carried every lesson, every late-night study session, and every hard-earned medal from our middle school years into this next chapter. We placed <strong>5th at Regionals and 11th at States</strong> — and we're just getting started.</p>
+        <p>We are <strong>students, scientists, builders, and problem-solvers</strong> — currently in 8th grade and heading into Division C as 9th graders. Our competitive drive is matched only by our commitment to each other and to the science we love.</p>
+      </div>
+    </div>
+    <div class="about-photo-col">
+      <div class="photo-slot" style="aspect-ratio: 4/3;">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Team Photo</div>
+      </div>
+      <div class="photo-slot" style="aspect-ratio: 4/3;">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Our Advisor</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-rule"></div>
+
+  <!-- Team members -->
+  <section class="team-grid">
+    <div class="section-label">Our People</div>
+    <h2 class="section-title">Meet the Team</h2>
+    <div class="team-cards">
+      <div class="team-card">
+        <div class="team-photo gold-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Prithvin</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo purple-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Reyansh</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo gold-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Parth</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo purple-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Yuktii</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo gold-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Anirudh</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo purple-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Sarah</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo gold-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Arni</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo purple-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Amitta</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo gold-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Arya</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo purple-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Adyah</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo gold-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Danya</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo purple-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Sri</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo gold-photo">👤</div>
+        <div class="team-info">
+          <div class="team-name">Veeksha</div>
+          <div class="team-role">Member · Grade 8 → 9</div>
+          <div class="team-events">[Events TBD]</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo purple-photo" style="border-bottom-color: var(--gold);">🎓</div>
+        <div class="team-info">
+          <div class="team-name">Mr. Ravi</div>
+          <div class="team-role">Coach / Advisor</div>
+          <div class="team-events">Science Olympiad Division B &amp; C</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo gold-photo" style="border-bottom-color: var(--purple-light);">🎓</div>
+        <div class="team-info">
+          <div class="team-name">Mrs. Latha</div>
+          <div class="team-role">Coach / Advisor</div>
+          <div class="team-events">Science Olympiad Division B &amp; C</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline-section">
+    <div class="section-label">Our History</div>
+    <h2 class="section-title">How We Got Here</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">The Origin — G.M. Walters Middle School</div>
+        <div class="timeline-event">Science Warriors, Division B</div>
+        <div class="timeline-desc">The team formed at G.M. Walters Middle School in Fremont, California, competing under the name Science Warriors in Division B. A core group of passionate, hard-working students built the foundation of what would become Science Titans.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Growth — Medals &amp; Milestones</div>
+        <div class="timeline-event">First Medals on the Board</div>
+        <div class="timeline-desc">Through relentless preparation and teamwork, the Science Warriors began earning medals — including gold and silver finishes — establishing ourselves as a competitive force in the Division B circuit.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">The Transition — Kennedy High School</div>
+        <div class="timeline-event">Science Titans, Division C</div>
+        <div class="timeline-desc">Moving up to Division C at Kennedy High School, we rebranded as the Science Titans — the same team, same spirit, bigger stage. Our Division B experience gave us a powerful competitive edge heading into high school.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Now — 2025 Season</div>
+        <div class="timeline-event">5th Regionals · 11th States</div>
+        <div class="timeline-desc">In our Division C debut season, we placed 5th at Regionals and 11th at States — a historic result for a first-year high school team. With 15 members and a full 23-event roster, the best is still ahead.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════
+     MISSION PAGE
+══════════════════════════════════════ -->
+<div id="page-mission" class="page">
+
+  <div class="mission-hero">
+    <div class="mission-hero-bg"></div>
+    <div class="mission-grid-bg"></div>
+    <div class="page-title-area">
+      <div class="page-eyebrow">Why We Compete</div>
+      <h1 class="page-main-title">Our Mission<br>& Goals</h1>
+    </div>
+  </div>
+
+  <!-- Mission Statement -->
+  <div class="mission-statement-block">
+    <p class="mission-quote">
+      "To develop the next generation of scientists and engineers through <span class="accent">rigorous competition, collaborative learning,</span> and a deep commitment to scientific excellence."
+    </p>
+    <div class="mission-attr">— Science Titans Mission Statement</div>
+  </div>
+
+  <!-- Values -->
+  <section class="values-section">
+    <div class="section-label">Core Values</div>
+    <h2 class="section-title">The Principles<br>That Guide Us</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-title">🔭 Scientific Excellence</div>
+        <p class="value-text">We hold ourselves to the highest academic standard. Our preparation is thorough, our testing is rigorous, and our commitment to getting science right is non-negotiable.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">🤲 Inclusive Collaboration</div>
+        <p class="value-text">Every voice matters. We build teams where all abilities, backgrounds, and learning styles are respected and celebrated — because the best science happens when diverse minds work together.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">🌱 Growth Mindset</div>
+        <p class="value-text">We embrace failure as data and mistakes as teachers. Our culture prizes learning over performance, and improvement over perfection — always pushing toward what's possible.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-title">🏛️ Community Responsibility</div>
+        <p class="value-text">Science is a public good. We take responsibility for sharing knowledge and inspiring scientific curiosity — in our school, our community, and beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Goals -->
+  <section class="goals-section">
+    <div class="section-label">Strategic Goals</div>
+    <h2 class="section-title">What We're<br>Working Toward</h2>
+    <div class="goals-list">
+      <div class="goal-item">
+        <div class="goal-num">01</div>
+        <div class="goal-content">
+          <div class="goal-title">Compete at the State Level</div>
+          <p class="goal-text">Our primary competitive goal is to build on our 5th-place regional finish and advance deeper into the State Tournament, where we aim to crack the top 5 statewide.</p>
+        </div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-num">02</div>
+        <div class="goal-content">
+          <div class="goal-title">Achieve Full Event Coverage</div>
+          <p class="goal-text">We aim to field competitive, prepared participants in all 23 Science Olympiad events — ensuring no event is forfeited and every member is trained and tested.</p>
+        </div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-num">03</div>
+        <div class="goal-content">
+          <div class="goal-title">Build a Sustainable Program</div>
+          <p class="goal-text">Through mentorship, documentation, and alumni networks, we're building a program that outlasts any individual season — a legacy that grows stronger each year.</p>
+        </div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-num">04</div>
+        <div class="goal-content">
+          <div class="goal-title">Expand STEM Outreach</div>
+          <p class="goal-text">We commit to hosting at minimum two outreach events per year targeting middle school students — introducing them to Science Olympiad and igniting a passion for STEM early.</p>
+        </div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-num">05</div>
+        <div class="goal-content">
+          <div class="goal-title">Secure Institutional Funding</div>
+          <p class="goal-text">We're actively pursuing sponsorships and grants to fully fund competition registration, travel, lab materials, and equipment — making participation accessible to all members regardless of financial background.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 80px;">
+    <div class="photo-grid" style="margin-top: 0;">
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Outreach Event</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Study Session</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-label">Regional Competition</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SPONSORS PAGE
+══════════════════════════════════════ -->
+<div id="page-sponsors" class="page">
+
+  <div class="sponsor-hero">
+    <div class="sponsor-hero-bg"></div>
+    <div class="about-hero-pattern"></div>
+    <div class="page-title-area">
+      <div class="page-eyebrow">Partner With Us</div>
+      <h1 class="page-main-title">Sponsor<br>Our Team</h1>
+    </div>
+  </div>
+
+  <section class="sponsor-intro">
+    <div class="sponsor-intro-grid">
+      <div>
+        <div class="section-label">The Opportunity</div>
+        <h2 class="section-title">Invest in<br>Tomorrow's<br>Scientists</h2>
+        <div class="two-col-body">
+          <p>Science Olympiad produces some of the most motivated, high-achieving STEM students in the country. Our alumni go on to universities like MIT, Stanford, Caltech, and Johns Hopkins — pursuing careers in medicine, research, engineering, and technology.</p>
+          <p>By sponsoring Science Titans, your organization gains <strong>direct visibility</strong> among these students and their families, while making a measurable impact on STEM education in our community.</p>
+          <p>Sponsorship funds go directly toward <strong>competition registration, travel, laboratory equipment, and materials</strong> — every dollar you invest translates to real opportunity for our students.</p>
+        </div>
+        <div style="margin-top: 32px;">
+          <button class="btn-primary" onclick="window.location.href='mailto:Prithvinpratheep@gmail.com?subject=Sponsorship%20Inquiry%20%E2%80%94%20Science%20Titans&body=Hi%20Science%20Titans%2C%0A%0AI%20am%20interested%20in%20sponsoring%20your%20team.%0A%0AOrganization%3A%20%0AContact%20Name%3A%20%0APhone%3A%20%0A%0ALooking%20forward%20to%20connecting!'">Get In Touch →</button>
+        </div>
+      </div>
+      <div>
+        <div class="photo-slot" style="aspect-ratio: 4/5;">
+          <div class="photo-slot-icon">📷</div>
+          <div class="photo-slot-label">Sponsor Recognition Photo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sponsor-tiers">
+    <div class="section-label">Sponsorship Levels</div>
+    <h2 class="section-title">Choose Your<br>Partnership Tier</h2>
+    <div class="tiers-grid">
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <div class="tier-badge">Bronze</div>
+          <div class="tier-name">Supporter</div>
+          <div class="tier-amount">Starting at $100</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-perks">
+            <li>Logo on our team website</li>
+            <li>Name recognition in tournament programs</li>
+            <li>Certificate of appreciation</li>
+            <li>Social media thank-you post</li>
+          </ul>
+          <div class="sponsor-cta" style="margin-top: 28px;">
+            <button class="btn-outline" style="width: 100%;" onclick="window.location.href='mailto:Prithvinpratheep@gmail.com?subject=Sponsorship%20Inquiry%20%E2%80%94%20Bronze%20Supporter&body=Hi%20Science%20Titans%2C%0A%0AI%20am%20interested%20in%20the%20Bronze%20Supporter%20sponsorship%20package%20(%24100).%0A%0AOrganization%3A%20%0AContact%20Name%3A%20%0APhone%3A%20%0A%0ALooking%20forward%20to%20connecting!'">Become a Supporter</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="tier-header">
+          <div class="tier-badge">⭐ Gold — Most Popular</div>
+          <div class="tier-name">Partner</div>
+          <div class="tier-amount">Starting at $500</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-perks">
+            <li>Everything in Bronze</li>
+            <li>Featured logo on team t-shirts & uniforms</li>
+            <li>Banner display at regional competition</li>
+            <li>Dedicated sponsor spotlight on website</li>
+            <li>Personal thank-you from the team</li>
+          </ul>
+          <div class="sponsor-cta" style="margin-top: 28px;">
+            <button class="btn-primary" style="width: 100%;" onclick="window.location.href='mailto:Prithvinpratheep@gmail.com?subject=Sponsorship%20Inquiry%20%E2%80%94%20Gold%20Partner&body=Hi%20Science%20Titans%2C%0A%0AI%20am%20interested%20in%20the%20Gold%20Partner%20sponsorship%20package%20(%24500).%0A%0AOrganization%3A%20%0AContact%20Name%3A%20%0APhone%3A%20%0A%0ALooking%20forward%20to%20connecting!'">Become a Partner</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-header">
+          <div class="tier-badge">Platinum</div>
+          <div class="tier-name">Champion</div>
+          <div class="tier-amount">Starting at $1,000</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-perks">
+            <li>Everything in Gold</li>
+            <li>Premier logo placement — all materials</li>
+            <li>Sponsor meet-and-greet with team</li>
+            <li>Named award at our hosted tournament</li>
+            <li>Quarterly impact report</li>
+            <li>Custom recognition — fully negotiable</li>
+          </ul>
+          <div class="sponsor-cta" style="margin-top: 28px;">
+            <button class="btn-outline" style="width: 100%;" onclick="window.location.href='mailto:Prithvinpratheep@gmail.com?subject=Sponsorship%20Inquiry%20%E2%80%94%20Platinum%20Champion&body=Hi%20Science%20Titans%2C%0A%0AI%20am%20interested%20in%20the%20Platinum%20Champion%20sponsorship%20package%20(%241%2C000%2B).%0A%0AOrganization%3A%20%0AContact%20Name%3A%20%0APhone%3A%20%0A%0ALooking%20forward%20to%20connecting!'">Become a Champion</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sponsor-logos-section">
+    <div class="section-label">Our Sponsors</div>
+    <h2 class="section-title">Organizations<br>Backing Our Mission</h2>
+    <div class="sponsor-logos-grid">
+      <div class="sponsor-logo-slot">Your Logo Here</div>
+      <div class="sponsor-logo-slot">Your Logo Here</div>
+      <div class="sponsor-logo-slot">Your Logo Here</div>
+      <div class="sponsor-logo-slot">Your Logo Here</div>
+    </div>
+    <p style="margin-top: 24px; font-size: 14px; color: #888; font-weight: 300; text-align: center;">Interested in being featured here? <span style="color: var(--purple-mid); cursor: pointer; text-decoration: underline;" onclick="showPage('contact')">Contact us today.</span></p>
+  </section>
+
+</div>
+
+
+<!-- ══════════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════════ -->
+<div id="page-contact" class="page">
+
+  <div class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <div class="page-title-area">
+      <div class="page-eyebrow">Reach Out</div>
+      <h1 class="page-main-title">Contact<br>Our Team</h1>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-label" style="color: var(--gold-light); justify-content: flex-start; margin-bottom: 40px;">
+        Get In Touch
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">Prithvinpratheep@gmail.com</div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label">School</div>
+        <div class="contact-value">Kennedy High School<br>Fremont, California</div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label">Faculty Advisor</div>
+        <div class="contact-value">Mr. Ravi &amp; Mrs. Latha<br>jfktitantv@gmail.com</div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label">Meeting Schedule</div>
+        <div class="contact-value">Tuesdays & Thursdays<br>3:00 PM – 5:00 PM, Rm [Room #]</div>
+      </div>
+
+
+    </div>
+
+    <div class="contact-form-section">
+      <div class="form-title">Send Us a Message</div>
+
+      <div class="form-two">
+        <div class="form-row">
+          <label class="form-label">First Name</label>
+          <input id="cf-first" class="form-input" type="text" placeholder="Jane">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Last Name</label>
+          <input id="cf-last" class="form-input" type="text" placeholder="Smith">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Email Address</label>
+        <input id="cf-email" class="form-input" type="email" placeholder="jane@company.com">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">I am reaching out as a...</label>
+        <select id="cf-type" class="form-select">
+          <option>Potential Sponsor</option>
+          <option>Parent / Guardian</option>
+          <option>Student / Prospective Member</option>
+          <option>Media / Press</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Organization / Company</label>
+        <input id="cf-org" class="form-input" type="text" placeholder="Optional">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Message</label>
+        <textarea id="cf-msg" class="form-textarea" placeholder="Tell us how you'd like to connect..."></textarea>
+      </div>
+
+      <button class="btn-primary" style="width: 100%; font-size: 14px; padding: 16px;" onclick="
+        var first = document.getElementById('cf-first').value;
+        var last = document.getElementById('cf-last').value;
+        var email = document.getElementById('cf-email').value;
+        var type = document.getElementById('cf-type').value;
+        var org = document.getElementById('cf-org').value;
+        var msg = document.getElementById('cf-msg').value;
+        var subject = encodeURIComponent('Science Titans Inquiry — ' + type);
+        var body = encodeURIComponent('Name: ' + first + ' ' + last + '\nEmail: ' + email + '\nType: ' + type + '\nOrganization: ' + org + '\n\nMessage:\n' + msg);
+        window.location.href = 'mailto:Prithvinpratheep@gmail.com?subject=' + subject + '&body=' + body;
+      ">Send Message →</button>
+
+      <p style="margin-top: 16px; font-size: 12px; color: #AAA; font-weight: 300;">We typically respond within 2–3 business days.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- FOOTER (shown on all pages) -->
+<footer>
+  <div class="footer-top">
+    <div style="text-align:center; max-width: 480px;">
+      <div class="footer-brand-name">Science <span>Titans</span></div>
+      <p class="footer-tagline">A Division C competitive team from Kennedy High School, Fremont, California. Formerly Science Warriors (Div B) at G.M. Walters Middle School. 5th Regionals · 11th States · 2 Golds · 2 Silvers.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links" style="text-align:center;">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">About Us</a></li>
+          <li><a onclick="showPage('mission')">Mission & Goals</a></li>
+          <li><a onclick="showPage('sponsors')">Sponsorship</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links" style="text-align:center;">
+          <li><a href="mailto:Prithvinpratheep@gmail.com">Prithvinpratheep@gmail.com</a></li>
+          <li><a onclick="showPage('contact')">Sponsor Inquiry</a></li>
+          <li><a onclick="showPage('contact')">General Inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Science Titans. All rights reserved.</div>
+    <div class="footer-badge">Division C · Science Olympiad</div>
+  </div>
+</footer>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('nav-' + name)?.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
