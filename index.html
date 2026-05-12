@@ -949,6 +949,228 @@
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     margin: 0 8%;
   }
+  /* ── SPONSOR IMPACT SIMULATOR ADD-ON ── */
+.impact-sim-section {
+  padding: 90px 8%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(123, 79, 187, 0.22), transparent 34%),
+    radial-gradient(circle at 80% 80%, rgba(201, 168, 76, 0.18), transparent 30%),
+    var(--black);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-sim-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.impact-sim-wrap {
+  position: relative;
+  z-index: 1;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 34px;
+  align-items: stretch;
+}
+
+.impact-control-panel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 38px;
+  backdrop-filter: blur(10px);
+}
+
+.impact-panel-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.impact-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(54px, 7vw, 86px);
+  line-height: 1;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+}
+
+.impact-tier-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 34px;
+}
+
+.impact-slider {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold), var(--purple-light));
+  outline: none;
+  margin-bottom: 26px;
+}
+
+.impact-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--gold-light);
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.2);
+}
+
+.impact-quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.impact-quick-buttons button {
+  border: 1px solid rgba(201,168,76,0.28);
+  background: rgba(255,255,255,0.03);
+  color: var(--gold);
+  padding: 10px 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.impact-quick-buttons button:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+.impact-output-panel {
+  background: var(--white);
+  color: var(--text-dark);
+  padding: 38px;
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.impact-output-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.impact-output-subtitle {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #5A5060;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+
+.impact-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.impact-bar-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 42px;
+  gap: 14px;
+  align-items: center;
+}
+
+.impact-bar-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.impact-bar-track {
+  height: 10px;
+  background: var(--gray-light);
+  overflow: hidden;
+}
+
+.impact-bar-fill {
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(90deg, var(--purple-mid), var(--gold));
+  transition: width 0.35s ease;
+}
+
+.impact-bar-percent {
+  font-size: 13px;
+  color: #6A6070;
+  font-weight: 500;
+}
+
+.impact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.impact-list li {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4A4050;
+  font-weight: 300;
+  display: flex;
+  gap: 10px;
+}
+
+.impact-list li::before {
+  content: '✦';
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.impact-mini-cta {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .impact-sim-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-quick-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .impact-bar-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1578,6 +1800,80 @@
   </div>
 </section>
 <!-- SPONSOR IMPACT ADD-ON END -->
+  <!-- INTERACTIVE SPONSOR IMPACT SIMULATOR ADD-ON START -->
+<section class="impact-sim-section">
+  <div class="section-label" style="color: var(--gold);">Interactive Impact Simulator</div>
+  <h2 class="section-title" style="color: var(--white);">See What Your<br>Sponsorship Builds</h2>
+  <p class="section-body" style="color: rgba(255,255,255,0.62);">
+    Move the slider to see how different sponsorship levels can directly support our team’s season,
+    from event supplies to full competition readiness.
+  </p>
+
+  <div class="impact-sim-wrap">
+    <div class="impact-control-panel">
+      <div class="impact-panel-label">Selected Sponsorship</div>
+      <div class="impact-amount" id="impactAmount">$500</div>
+      <div class="impact-tier-name" id="impactTier">Gold Partner Level</div>
+
+      <input
+        class="impact-slider"
+        id="impactSlider"
+        type="range"
+        min="100"
+        max="1500"
+        step="50"
+        value="500"
+        oninput="updateImpactSimulator(this.value)"
+      >
+
+      <div class="impact-quick-buttons">
+        <button onclick="setImpactAmount(100)">$100</button>
+        <button onclick="setImpactAmount(250)">$250</button>
+        <button onclick="setImpactAmount(500)">$500</button>
+        <button onclick="setImpactAmount(1000)">$1000</button>
+      </div>
+    </div>
+
+    <div class="impact-output-panel">
+      <div class="impact-output-title" id="impactTitle">Major Team Resources</div>
+      <p class="impact-output-subtitle" id="impactSubtitle">
+        A sponsorship at this level can support multiple event teams and help cover the materials needed for serious competition preparation.
+      </p>
+
+      <div class="impact-bars">
+        <div class="impact-bar-row">
+          <div class="impact-bar-label">Lab Prep</div>
+          <div class="impact-bar-track"><div class="impact-bar-fill" id="barLab"></div></div>
+          <div class="impact-bar-percent" id="percentLab">65%</div>
+        </div>
+
+        <div class="impact-bar-row">
+          <div class="impact-bar-label">Build Events</div>
+          <div class="impact-bar-track"><div class="impact-bar-fill" id="barBuild"></div></div>
+          <div class="impact-bar-percent" id="percentBuild">70%</div>
+        </div>
+
+        <div class="impact-bar-row">
+          <div class="impact-bar-label">Competition</div>
+          <div class="impact-bar-track"><div class="impact-bar-fill" id="barComp"></div></div>
+          <div class="impact-bar-percent" id="percentComp">55%</div>
+        </div>
+      </div>
+
+      <ul class="impact-list" id="impactList">
+        <li>Supports materials for multiple Science Olympiad events.</li>
+        <li>Helps fund binders, printing, testing supplies, and build components.</li>
+        <li>Improves preparation quality for Regionals and State-level competition.</li>
+      </ul>
+
+      <div class="impact-mini-cta">
+        <button class="btn-primary" onclick="showPage('contact')">Contact Us About Sponsoring</button>
+        <button class="btn-outline" onclick="showPage('sponsors')">View Sponsor Tiers</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- INTERACTIVE SPONSOR IMPACT SIMULATOR ADD-ON END -->
   <section class="sponsor-tiers">
     <div class="section-label">Sponsorship Levels</div>
     <h2 class="section-title">Choose Your<br>Partnership Tier</h2>
@@ -1805,6 +2101,116 @@
     document.getElementById('nav-' + name)?.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  /* INTERACTIVE SPONSOR IMPACT SIMULATOR ADD-ON START */
+function setImpactAmount(amount) {
+  var slider = document.getElementById("impactSlider");
+  if (!slider) return;
+
+  slider.value = amount;
+  updateImpactSimulator(amount);
+}
+
+function updateImpactSimulator(value) {
+  value = Number(value);
+
+  var amount = document.getElementById("impactAmount");
+  var tier = document.getElementById("impactTier");
+  var title = document.getElementById("impactTitle");
+  var subtitle = document.getElementById("impactSubtitle");
+  var list = document.getElementById("impactList");
+
+  var barLab = document.getElementById("barLab");
+  var barBuild = document.getElementById("barBuild");
+  var barComp = document.getElementById("barComp");
+
+  var percentLab = document.getElementById("percentLab");
+  var percentBuild = document.getElementById("percentBuild");
+  var percentComp = document.getElementById("percentComp");
+
+  if (!amount || !tier || !title || !subtitle || !list) return;
+
+  amount.textContent = "$" + value.toLocaleString();
+
+  var data;
+
+  if (value < 250) {
+    data = {
+      tier: "Bronze Supporter Level",
+      title: "Essential Event Materials",
+      subtitle: "A sponsorship at this level helps cover the basic supplies students need to prepare consistently and professionally.",
+      lab: 35,
+      build: 25,
+      comp: 20,
+      items: [
+        "Helps fund binders, notes, printing, and event reference materials.",
+        "Supports small lab supplies and practice resources.",
+        "Makes team preparation more accessible for every member."
+      ]
+    };
+  } else if (value < 500) {
+    data = {
+      tier: "Rising Supporter Level",
+      title: "Build Testing & Prep Support",
+      subtitle: "A sponsorship at this level can support early prototypes, testing supplies, and stronger event preparation across the team.",
+      lab: 50,
+      build: 55,
+      comp: 35,
+      items: [
+        "Supports engineering materials for build-event testing.",
+        "Helps fund practice tests, study guides, and preparation tools.",
+        "Gives event partners more chances to test, fail, improve, and compete stronger."
+      ]
+    };
+  } else if (value < 1000) {
+    data = {
+      tier: "Gold Partner Level",
+      title: "Major Team Resources",
+      subtitle: "A sponsorship at this level can support multiple event teams and help cover the materials needed for serious competition preparation.",
+      lab: 65,
+      build: 70,
+      comp: 55,
+      items: [
+        "Supports materials for multiple Science Olympiad events.",
+        "Helps fund binders, printing, testing supplies, and build components.",
+        "Improves preparation quality for Regionals and State-level competition."
+      ]
+    };
+  } else {
+    data = {
+      tier: "Platinum Champion Level",
+      title: "Season-Level Support",
+      subtitle: "A sponsorship at this level can make a major difference across the entire season, from team identity to competition readiness.",
+      lab: 90,
+      build: 95,
+      comp: 85,
+      items: [
+        "Helps cover major team expenses like registration, travel, shirts, and supplies.",
+        "Supports advanced build-event testing and stronger competition-day readiness.",
+        "Positions your organization as a major supporter of student-led STEM excellence."
+      ]
+    };
+  }
+
+  tier.textContent = data.tier;
+  title.textContent = data.title;
+  subtitle.textContent = data.subtitle;
+
+  barLab.style.width = data.lab + "%";
+  barBuild.style.width = data.build + "%";
+  barComp.style.width = data.comp + "%";
+
+  percentLab.textContent = data.lab + "%";
+  percentBuild.textContent = data.build + "%";
+  percentComp.textContent = data.comp + "%";
+
+  list.innerHTML = "";
+  data.items.forEach(function(item) {
+    var li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+}
+/* INTERACTIVE SPONSOR IMPACT SIMULATOR ADD-ON END */
 </script>
 
 </body>
