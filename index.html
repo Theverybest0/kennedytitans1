@@ -1171,6 +1171,185 @@
     gap: 6px;
   }
 }
+  /* ── TITAN COMMAND CENTER ADD-ON ── */
+.command-center {
+  padding: 100px 8%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(92,45,158,0.35), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(201,168,76,0.18), transparent 30%),
+    var(--black);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.command-center::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+.command-center > * {
+  position: relative;
+  z-index: 1;
+}
+
+.command-grid {
+  margin-top: 55px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 28px;
+}
+
+.command-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.command-tab {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: rgba(255,255,255,0.72);
+  padding: 22px;
+  text-align: left;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.command-tab span {
+  color: var(--gold);
+  margin-right: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+}
+
+.command-tab:hover,
+.command-tab.active {
+  background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+  border-color: var(--gold);
+  color: var(--white);
+  transform: translateX(6px);
+}
+
+.command-display {
+  background: rgba(255,255,255,0.96);
+  color: var(--text-dark);
+  padding: 44px;
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+  min-height: 420px;
+}
+
+.command-status {
+  display: inline-block;
+  background: rgba(201,168,76,0.14);
+  border: 1px solid rgba(201,168,76,0.32);
+  padding: 7px 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 22px;
+}
+
+.command-display h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.command-display p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5A5060;
+  font-weight: 300;
+  max-width: 650px;
+}
+
+.command-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 34px 0;
+}
+
+.command-metrics div {
+  background: var(--gray-light);
+  padding: 22px;
+  border-left: 3px solid var(--purple-light);
+}
+
+.command-metrics strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--purple);
+}
+
+.command-metrics span {
+  display: block;
+  margin-top: 7px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6A6070;
+}
+
+.command-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.command-list li {
+  font-size: 15px;
+  color: #4A4050;
+  line-height: 1.6;
+  font-weight: 300;
+  display: flex;
+  gap: 10px;
+}
+
+.command-list li::before {
+  content: '✦';
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .command-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-tab:hover,
+  .command-tab.active {
+    transform: translateY(-2px);
+  }
+
+  .command-metrics {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 <body>
@@ -1244,7 +1423,67 @@
       </div>
     </div>
   </section>
+<!-- TITAN COMMAND CENTER ADD-ON START -->
+<section class="command-center">
+  <div class="section-label" style="color: var(--gold);">Titan Command Center</div>
+  <h2 class="section-title" style="color: var(--white);">Explore How<br>We Operate</h2>
+  <p class="section-body" style="color: rgba(255,255,255,0.62);">
+    Science Titans is more than a competition team. We study, build, test, compete,
+    and represent student-led STEM excellence across every part of the season.
+  </p>
 
+  <div class="command-grid">
+    <div class="command-tabs">
+      <button class="command-tab active" onclick="showCommandMode('compete', this)">
+        <span>01</span>
+        Competition Mode
+      </button>
+      <button class="command-tab" onclick="showCommandMode('build', this)">
+        <span>02</span>
+        Build Mode
+      </button>
+      <button class="command-tab" onclick="showCommandMode('study', this)">
+        <span>03</span>
+        Study Mode
+      </button>
+      <button class="command-tab" onclick="showCommandMode('outreach', this)">
+        <span>04</span>
+        Outreach Mode
+      </button>
+    </div>
+
+    <div class="command-display">
+      <div class="command-status">ACTIVE SYSTEM</div>
+      <h3 id="commandTitle">Competition Mode</h3>
+      <p id="commandText">
+        We prepare for Science Olympiad tournaments through event-specific practice,
+        timed testing, strategy planning, and full-team competition readiness.
+      </p>
+
+      <div class="command-metrics">
+        <div>
+          <strong id="commandMetricOne">23</strong>
+          <span id="commandLabelOne">Events Covered</span>
+        </div>
+        <div>
+          <strong id="commandMetricTwo">15</strong>
+          <span id="commandLabelTwo">Team Members</span>
+        </div>
+        <div>
+          <strong id="commandMetricThree">5th</strong>
+          <span id="commandLabelThree">Regional Finish</span>
+        </div>
+      </div>
+
+      <ul class="command-list" id="commandList">
+        <li>Timed practice tests and competition simulations</li>
+        <li>Event partner strategy and performance tracking</li>
+        <li>Regional and State-level preparation goals</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- TITAN COMMAND CENTER ADD-ON END -->
   <!-- Pillars -->
   <section class="pillars">
     <div>
@@ -2211,6 +2450,99 @@ function updateImpactSimulator(value) {
   });
 }
 /* INTERACTIVE SPONSOR IMPACT SIMULATOR ADD-ON END */
+  /* TITAN COMMAND CENTER ADD-ON START */
+function showCommandMode(mode, clickedButton) {
+  var data = {
+    compete: {
+      title: "Competition Mode",
+      text: "We prepare for Science Olympiad tournaments through event-specific practice, timed testing, strategy planning, and full-team competition readiness.",
+      metricOne: "23",
+      labelOne: "Events Covered",
+      metricTwo: "15",
+      labelTwo: "Team Members",
+      metricThree: "5th",
+      labelThree: "Regional Finish",
+      items: [
+        "Timed practice tests and competition simulations",
+        "Event partner strategy and performance tracking",
+        "Regional and State-level preparation goals"
+      ]
+    },
+    build: {
+      title: "Build Mode",
+      text: "Our engineering events require repeated design, testing, failure analysis, and improvement. Every build is treated like a real engineering challenge.",
+      metricOne: "4+",
+      labelOne: "Build Events",
+      metricTwo: "100+",
+      labelTwo: "Test Runs",
+      metricThree: "∞",
+      labelThree: "Iterations",
+      items: [
+        "Prototype design and materials testing",
+        "Data-based improvements after every run",
+        "Build logs, measurements, and performance tracking"
+      ]
+    },
+    study: {
+      title: "Study Mode",
+      text: "Our study events demand deep content knowledge across biology, chemistry, physics, earth science, engineering, and problem-solving.",
+      metricOne: "100+",
+      labelOne: "Prep Hours",
+      metricTwo: "10+",
+      labelTwo: "Study Events",
+      metricThree: "24/7",
+      labelThree: "Grindset",
+      items: [
+        "Practice tests, binders, notes, and review sessions",
+        "Partner-based studying and topic breakdowns",
+        "Focused preparation for high-value event concepts"
+      ]
+    },
+    outreach: {
+      title: "Outreach Mode",
+      text: "Science Titans aims to grow STEM interest beyond our own team by mentoring younger students and creating community-facing science opportunities.",
+      metricOne: "2+",
+      labelOne: "Outreach Goals",
+      metricTwo: "1",
+      labelTwo: "Community",
+      metricThree: "Next",
+      labelThree: "Generation",
+      items: [
+        "Middle school Science Olympiad mentorship",
+        "STEM awareness and student-led outreach",
+        "Building a sustainable program for future Titans"
+      ]
+    }
+  };
+
+  var selected = data[mode];
+
+  document.getElementById("commandTitle").textContent = selected.title;
+  document.getElementById("commandText").textContent = selected.text;
+  document.getElementById("commandMetricOne").textContent = selected.metricOne;
+  document.getElementById("commandLabelOne").textContent = selected.labelOne;
+  document.getElementById("commandMetricTwo").textContent = selected.metricTwo;
+  document.getElementById("commandLabelTwo").textContent = selected.labelTwo;
+  document.getElementById("commandMetricThree").textContent = selected.metricThree;
+  document.getElementById("commandLabelThree").textContent = selected.labelThree;
+
+  var list = document.getElementById("commandList");
+  list.innerHTML = "";
+
+  selected.items.forEach(function(item) {
+    var li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+
+  var tabs = document.querySelectorAll(".command-tab");
+  tabs.forEach(function(tab) {
+    tab.classList.remove("active");
+  });
+
+  clickedButton.classList.add("active");
+}
+/* TITAN COMMAND CENTER ADD-ON END */
 </script>
 
 </body>
